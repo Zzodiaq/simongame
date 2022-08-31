@@ -6,21 +6,27 @@ let level = 0;
 
 $("body").one("keypress", function(){
    nextSequence();
+   $("#level-title").html("Level " + level);
 })
 
 
+
+$(".btn").on('click', function(){
+   const userChosenColour = $(this).attr("id");
+   userClickedPattern.push(userChosenColour);
+   playSound(userClickedPattern);
+   animatePress(userClickedPattern);
+   checkAnswer();
+});
+
 function nextSequence(){
+   level++;
+   $("#level-title").html("Level " + level);
    const randomNumber = Math.floor(Math.random() * (3 - 0 + 1));
    const randomChosenColour = buttonColours[randomNumber];
    gamePattern.push(randomChosenColour);
    $("#" + randomChosenColour).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-  console.log(randomNumber);
-   $(".btn").on('click', function(){
-      const userChosenColour = $(this).attr("id");
-      userClickedPattern.push(userChosenColour);
-      playSound(userClickedPattern);
-      animatePress(userClickedPattern);
-   });
+
 }
 
 
@@ -39,6 +45,10 @@ function animatePress(currentColour){
    }, 100);
 }
 
+ 
+function checkAnswer(currentLevel){
+
+}
 
 
 
