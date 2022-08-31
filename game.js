@@ -1,12 +1,12 @@
 const buttonColours = ["red", "blue", "green", "yellow"];
 const gamePattern = [];
 userClickedPattern = [];
+let level = 0;
 
 
-
-   $("*").one("keypress", function(){
-      nextSequence();
-   });
+$("body").one("keypress", function(){
+   nextSequence();
+})
 
 
 function nextSequence(){
